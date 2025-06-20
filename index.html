@@ -25,6 +25,7 @@
             background-color: #ffffff;
             color: #333;
             line-height: 1.7;
+            overflow-x: hidden;
         }
         
         a {
@@ -32,7 +33,7 @@
             transition: all 0.3s ease;
         }
         
-        /* Navbar Modern */
+        /* Navbar */
         .navbar {
             background-color: var(--dark);
             padding: 0.8rem 2rem;
@@ -139,7 +140,7 @@
         }
         
         .hero h1 {
-            font-size: 2rem;
+            font-size: 2.5rem;
             margin-bottom: 1.5rem;
             line-height: 1.2;
         }
@@ -178,7 +179,7 @@
         
         /* Main Content */
         .container {
-          width 100%;
+            width: 100%;
             max-width: 1200px;
             margin: 4rem auto;
             padding: 0 2rem;
@@ -220,15 +221,18 @@
             flex-wrap: wrap;
             gap: 2rem;
             margin-bottom: 4rem;
+            align-items: flex-start;
         }
         
         .profil-text {
-            max-width 800px;
+            flex: 1 1 60%;
+            min-width: 300px;
         }
         
         .profil-image {
             flex: 1 1 35%;
             min-width: 300px;
+            position: relative;
         }
         
         .profil-image img {
@@ -260,16 +264,16 @@
         
         /* Struktur Section */
         .struktur-container {
-          max-width: 100%;
+            width: 100%;
             overflow-x: auto;
+            margin: 2rem 0;
+            -webkit-overflow-scrolling: touch;
         }
         
         .struktur-table {
             width: 100%;
             min-width: 600px;
-            max-width: 1000px;
-            margin: 0 auto;
-           
+            border-collapse: collapse;
         }
         
         .struktur-table thead {
@@ -301,6 +305,11 @@
             color: var(--primary);
         }
         
+        .section-header {
+            background-color: #e9ecef;
+            font-weight: bold;
+        }
+        
         /* Kontak Section */
         .kontak-grid {
             display: grid;
@@ -314,8 +323,11 @@
             border-radius: 8px;
             padding: 2rem;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.3s ease;
             border-top: 3px solid var(--secondary);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
         
         .kontak-card:hover {
@@ -340,6 +352,7 @@
             margin-bottom: 0.8rem;
             display: block;
             color: var(--gray);
+            line-height: 1.6;
         }
         
         .kontak-card a:hover {
@@ -349,7 +362,9 @@
         .social-links {
             display: flex;
             gap: 1rem;
-            margin-top: 1.5rem;
+            margin-top: auto;
+            padding-top: 1.5rem;
+            flex-wrap: wrap;
         }
         
         .social-links a {
@@ -375,6 +390,7 @@
             background-color: var(--dark);
             color: white;
             padding: 4rem 0 2rem;
+            margin-top: 4rem;
         }
         
         .footer-container {
@@ -407,6 +423,12 @@
         .footer-col p {
             margin-bottom: 1rem;
             opacity: 0.8;
+            line-height: 1.6;
+        }
+        
+        .footer-links {
+            margin: 0;
+            padding: 0;
         }
         
         .footer-links li {
@@ -418,6 +440,7 @@
             color: rgba(255, 255, 255, 0.8);
             display: flex;
             align-items: center;
+            transition: all 0.3s ease;
         }
         
         .footer-links a:hover {
@@ -427,6 +450,8 @@
         
         .footer-links a i {
             margin-right: 8px;
+            width: 20px;
+            text-align: center;
         }
         
         .copyright {
@@ -439,19 +464,6 @@
         }
         
         /* Responsive */
-        @media (min-width: 1200px) {
-    .profil-content {
-        justify-content: center;
-    }
-    
-    .profil-text {
-        flex: 0 1 800px; 
-    }
-    
-    .profil-image {
-        flex: 0 1 400px;
-    }
-}
         @media (max-width: 992px) {
             .hero h1 {
                 font-size: 2.4rem;
@@ -522,7 +534,11 @@
             }
             
             .section-title h2 {
-                font-size: 1.2rem;
+                font-size: 1.5rem;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -530,7 +546,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
-    <!-- Navbar Modern -->
+    <!-- Navbar -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="#" class="brand">
@@ -605,69 +621,69 @@
             </div>
         </section>
         
-   <!-- Struktur Section -->
-<section id="struktur">
-    <div class="section-title">
-        <h2>Struktur Organisasi</h2>
-        <p>Susunan kepengurusan PMII UNU Cirebon masa khidmat 2025-2026</p>
-    </div>
-    
-    <div class="struktur-container">
-        <table class="struktur-table">
-            <thead>
-                <tr>
-                    <th>Jabatan</th>
-                    <th>Nama Lengkap</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td class="highlight">Ketua</td><td>Muhammad Faiz Hadi</td></tr>
-                <tr><td class="highlight">Sekretaris</td><td>Badar Muhammad Badrudduja</td></tr>
-                <tr><td class="highlight">Bendahara</td><td>Yusrul Amri</td></tr>
-                <tr><td class="highlight">Wakil Bendahara</td><td>Moh. Halwan Fadli Ilhami</td></tr>
+        <!-- Struktur Section -->
+        <section id="struktur">
+            <div class="section-title">
+                <h2>Struktur Organisasi</h2>
+                <p>Susunan kepengurusan PMII UNU Cirebon masa khidmat 2025-2026</p>
+            </div>
+            
+            <div class="struktur-container">
+                <table class="struktur-table">
+                    <thead>
+                        <tr>
+                            <th>Jabatan</th>
+                            <th>Nama Lengkap</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="highlight">Ketua</td><td>Muhammad Faiz Hadi</td></tr>
+                        <tr><td class="highlight">Sekretaris</td><td>Badar Muhammad Badrudduja</td></tr>
+                        <tr><td class="highlight">Bendahara</td><td>Yusrul Amri</td></tr>
+                        <tr><td class="highlight">Wakil Bendahara</td><td>Moh. Halwan Fadli Ilhami</td></tr>
 
-                <!-- Bidang Kaderisasi -->
-                <tr><td colspan="2" class="section-header"><strong> Bidang Kaderisasi</strong> </td></tr>
-                <tr><td>Wakil Ketua</td><td>Abdullah Massaid</td></tr>
-                <tr><td>Wakil Sekretaris</td><td>Fais Indra Fauzi</td></tr>
-                <tr><td>Anggota</td><td>Bagus Adi Wichaksono</td></tr>
+                        <!-- Bidang Kaderisasi -->
+                        <tr><td colspan="2" class="section-header"><strong> Bidang Kaderisasi</strong> </td></tr>
+                        <tr><td>Wakil Ketua</td><td>Abdullah Massaid</td></tr>
+                        <tr><td>Wakil Sekretaris</td><td>Fais Indra Fauzi</td></tr>
+                        <tr><td>Anggota</td><td>Bagus Adi Wichaksono</td></tr>
 
-                <!-- Bidang Komunikasi -->
-                <tr><td colspan="2" class="section-header"><strong> Bidang Komunikasi dan Hubungan Antar Lembaga Organisasi</strong></td></tr>
-                <tr><td>Wakil Ketua</td><td>Dicky Ahmad Fauzi</td></tr>
-                <tr><td>Wakil Sekretaris</td><td>Mukhamad Masrur</td></tr>
-                <tr><td>Anggota</td><td>Fajar Ardiansyah</td></tr>
+                        <!-- Bidang Komunikasi -->
+                        <tr><td colspan="2" class="section-header"><strong> Bidang Komunikasi dan Hubungan Antar Lembaga Organisasi</strong></td></tr>
+                        <tr><td>Wakil Ketua</td><td>Dicky Ahmad Fauzi</td></tr>
+                        <tr><td>Wakil Sekretaris</td><td>Mukhamad Masrur</td></tr>
+                        <tr><td>Anggota</td><td>Fajar Ardiansyah</td></tr>
 
-                <!-- Bidang Keagamaan -->
-                <tr><td colspan="2" class="section-header"><strong> Bidang Keagamaan</strong></td></tr>
-                <tr><td>Wakil Ketua</td><td>Martin Surrohman</td></tr>
-                <tr><td>Wakil Sekretaris</td><td>Miftachurrohman</td></tr>
-                <tr><td>Anggota</td><td>Moh. Taffriyatul Hildan</td></tr>
+                        <!-- Bidang Keagamaan -->
+                        <tr><td colspan="2" class="section-header"><strong> Bidang Keagamaan</strong></td></tr>
+                        <tr><td>Wakil Ketua</td><td>Martin Surrohman</td></tr>
+                        <tr><td>Wakil Sekretaris</td><td>Miftachurrohman</td></tr>
+                        <tr><td>Anggota</td><td>Moh. Taffriyatul Hildan</td></tr>
 
-                <!-- Bidang Pendidikan -->
-                <tr><td colspan="2" class="section-header"><strong> Bidang Pendidikan dan Pengembangan Akademik</strong></td></tr>
-                <tr><td>Wakil Ketua</td><td>Muhammad Ali Ridho</td></tr>
-                <tr><td>Wakil Sekretaris</td><td>Melysa</td></tr>
-                <tr><td>Anggota</td><td>Chusnul Triyanggi</td></tr>
+                        <!-- Bidang Pendidikan -->
+                        <tr><td colspan="2" class="section-header"><strong> Bidang Pendidikan dan Pengembangan Akademik</strong></td></tr>
+                        <tr><td>Wakil Ketua</td><td>Muhammad Ali Ridho</td></tr>
+                        <tr><td>Wakil Sekretaris</td><td>Melysa</td></tr>
+                        <tr><td>Anggota</td><td>Chusnul Triyanggi</td></tr>
 
-                <!-- Bidang Siber Media -->
-                <tr><td colspan="2" class="section-header"><strong> Bidang Siber Media dan Pengelolaan Opini Publik</strong></td></tr>
-                <tr><td>Wakil Ketua</td><td>Yafi Hamami Aziz</td></tr>
-                <tr><td>Wakil Sekretaris</td><td>Irgi Gumelang</td></tr>
-                <tr><td>Anggota</td><td>Sonia Julia</td></tr>
+                        <!-- Bidang Siber Media -->
+                        <tr><td colspan="2" class="section-header"><strong> Bidang Siber Media dan Pengelolaan Opini Publik</strong></td></tr>
+                        <tr><td>Wakil Ketua</td><td>Yafi Hamami Aziz</td></tr>
+                        <tr><td>Wakil Sekretaris</td><td>Irgi Gumelang</td></tr>
+                        <tr><td>Anggota</td><td>Sonia Julia</td></tr>
 
-                <!-- KOPRI -->
-                <tr><td colspan="2" class="section-header"><strong>Badan Semi Otonom Kopri<strong></td></tr>
-                <tr><td>Ketua</td><td>Alfina Nurfadiyah</td></tr>
-                <tr><td>Sekretaris</td><td>Fathatul Mukarromah</td></tr>
-                <tr><td>Bendahara</td><td>Wulan Nuristiqomah</td></tr>
-                <tr><td>Anggota</td><td>Elis Rifatun Fauziyah</td></tr>
-                <tr><td>Anggota</td><td>Indah Setianingsih</td></tr>
-                <tr><td>Anggota</td><td>Ishika Valentina</td></tr>
-            </tbody>
-        </table>
-    </div>
-</section>
+                        <!-- KOPRI -->
+                        <tr><td colspan="2" class="section-header"><strong>Badan Semi Otonom Kopri<strong></td></tr>
+                        <tr><td>Ketua</td><td>Alfina Nurfadiyah</td></tr>
+                        <tr><td>Sekretaris</td><td>Fathatul Mukarromah</td></tr>
+                        <tr><td>Bendahara</td><td>Wulan Nuristiqomah</td></tr>
+                        <tr><td>Anggota</td><td>Elis Rifatun Fauziyah</td></tr>
+                        <tr><td>Anggota</td><td>Indah Setianingsih</td></tr>
+                        <tr><td>Anggota</td><td>Ishika Valentina</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
         
         <!-- Kontak Section -->
         <section id="kontak">
@@ -679,7 +695,7 @@
             <div class="kontak-grid">
                 <div class="kontak-card">
                     <h3><i class="fas fa-map-marker-alt"></i> Lokasi Kami</h3>
-                    <p>Sekretariat PMII UNU Cirebon</p>
+                    <p><strong>Sekretariat PMII UNU Cirebon</strong></p>
                     <p>Gedung Student Center Lt. 2</p>
                     <p>Universitas Nahdlatul Ulama Cirebon</p>
                     <p>Jl. Sisingamangaraja No. 33, Cirebon</p>
@@ -687,10 +703,9 @@
                 
                 <div class="kontak-card">
                     <h3><i class="fas fa-envelope"></i> Kontak Resmi</h3>
-                   
-                   <p><i class="fas fa-envelope"></i> pmiiunucirebon21@gmail.com</p>
+                    <p><i class="fas fa-envelope"></i> pmiiunucirebon21@gmail.com</p>
                     <p><i class="fas fa-phone"></i> +62 838 172 167 54 (Sekretariat)</p>
-                    <p><i class="fas fa-phone"></i> +62 831-2601 3262 (Ketua) </p>
+                    <p><i class="fas fa-phone"></i> +62 831-2601 3262 (Ketua)</p>
                 </div>
                 
                 <div class="kontak-card">
