@@ -135,6 +135,7 @@
         
         .hero-content {
             max-width: 800px;
+            margin: 0 auto;
         }
         
         .hero h1 {
@@ -177,6 +178,7 @@
         
         /* Main Content */
         .container {
+          width 100%;
             max-width: 1200px;
             margin: 4rem auto;
             padding: 0 2rem;
@@ -221,7 +223,7 @@
         }
         
         .profil-text {
-            flex: 1 1 60%;
+            max-width 800px;
         }
         
         .profil-image {
@@ -258,14 +260,16 @@
         
         /* Struktur Section */
         .struktur-container {
+          max-width: 100%;
             overflow-x: auto;
         }
         
         .struktur-table {
             width: 100%;
-            border-collapse: collapse;
-            margin: 2rem 0;
             min-width: 600px;
+            max-width: 1000px;
+            margin: 0 auto;
+           
         }
         
         .struktur-table thead {
@@ -435,6 +439,19 @@
         }
         
         /* Responsive */
+        @media (min-width: 1200px) {
+    .profil-content {
+        justify-content: center;
+    }
+    
+    .profil-text {
+        flex: 0 1 800px; 
+    }
+    
+    .profil-image {
+        flex: 0 1 400px;
+    }
+}
         @media (max-width: 992px) {
             .hero h1 {
                 font-size: 2.4rem;
@@ -563,7 +580,7 @@
             <div class="profil-content">
                 <div class="profil-text">
                     <h3>Latar Belakang</h3>
-                    <p>PMII (Pergerakan Mahasiswa Islam Indonesia) UNU Cirebon merupakan organisasi kemahasiswaan yang berdiri pada tahun 2021 di lingkungan Universitas Nahdlatul Ulama Cirebon. Sebagai bagian dari jaringan PMII nasional, kami berkomitmen untuk membangun mahasiswa muslim yang intelektual, berkarakter, dan berkontribusi positif bagi masyarakat.</p>
+                    <p>PMII (Pergerakan Mahasiswa Islam Indonesia) UNU Cirebon merupakan organisasi kemahasiswaan yang berdiri pada tahun 2015 di lingkungan Universitas Nahdlatul Ulama Cirebon. Sebagai bagian dari jaringan PMII nasional, kami berkomitmen untuk membangun mahasiswa muslim yang intelektual, berkarakter, dan berkontribusi positif bagi masyarakat.</p>
                     
                     <p>Organisasi ini menjadi wadah pengembangan diri bagi mahasiswa UNU Cirebon melalui berbagai kegiatan yang mendukung pengembangan intelektual, spiritual, dan sosial. Dengan berlandaskan nilai-nilai Ahlussunnah Wal Jama'ah, PMII UNU Cirebon aktif berkontribusi dalam pengembangan kampus dan masyarakat sekitar.</p>
                     
