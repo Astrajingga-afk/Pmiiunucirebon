@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PMII UNU Cirebon | Pergerakan Mahasiswa Islam Indonesia</title>
+    <style>
+        /* Reset & Base Styles */
+        :root {
+            --primary: #1a237e;
+            --secondary: #ffc107;
+            --dark: #0d153a;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: #ffffff;
+            color: #333;
+            line-height: 1.7;
+        }
+        
+        a {
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        /* Navbar Modern */
+        .navbar {
+            background-color: var(--dark);
+            padding: 0.8rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .brand {
+            display: flex;
+            align-items: center;
+        }
+        
+        .brand-logo {
+            height: 50px;
+            margin-right: 15px;
+        }
+        
+        .brand-text h1 {
+            color: white;
+            font-size: 1.4rem;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+        
+        .brand-text span {
+            color: var(--secondary);
+        }
+        
+        .brand-text p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-item {
+            margin-left: 1.8rem;
+            position: relative;
+        }
+        
+        .nav-link {
+            color: white;
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-link:hover {
+            color: var(--secondary);
+        }
+        
+        .nav-link.active {
+            color: var(--secondary);
+        }
+        
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 35, 126, 0.8), rgba(26, 35, 126, 0.8)), 
+                        url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            height: 60vh;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 2rem;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero h1 span {
+            color: var(--secondary);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary);
+            color: var(--dark);
+            border: 2px solid var(--secondary);
+        }
+        
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--secondary);
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            color: var(--primary);
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Profil Section */
+        .profil-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .profil-text {
+            flex: 1 1 60%;
+        }
+        
+        .profil-image {
+            flex: 1 1 35%;
+            min-width: 300px;
+        }
+        
+        .profil-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .visi-misi {
+            background-color: #f8f9fa;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .visi-misi h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .visi-misi h3 i {
+            margin-right: 10px;
+            color: var(--secondary);
+            font-size: 1.2rem;
+        }
+        
+        /* Struktur Section */
+        .struktur-container {
+            overflow-x: auto;
+        }
+        
+        .struktur-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            min-width: 600px;
+        }
+        
+        .struktur-table thead {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .struktur-table th {
+            padding: 1.2rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .struktur-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .struktur-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        .struktur-table tr:hover {
+            background-color: #f1f1f1;
+        }
+        
+        .struktur-table .highlight {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        /* Kontak Section */
+        .kontak-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .kontak-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 3px solid var(--secondary);
+        }
+        
+        .kontak-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .kontak-card h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .kontak-card h3 i {
+            margin-right: 10px;
+            color: var(--secondary);
+            font-size: 1.2rem;
+        }
+        
+        .kontak-card p, .kontak-card a {
+            margin-bottom: 0.8rem;
+            display: block;
+            color: var(--gray);
+        }
+        
+        .kontak-card a:hover {
+            color: var(--primary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+        
+        .footer-col h3 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+        
+        .footer-col p {
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+        
+        .footer-links li {
+            list-style: none;
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+        
+        .footer-links a i {
+            margin-right: 8px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+                color: white;
+                font-size: 1.5rem;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: var(--dark);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                transition: all 0.5s ease;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-item {
+                margin: 1rem 0;
+            }
+            
+            .hero {
+                height: 50vh;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .profil-content {
+                flex-direction: column;
+            }
+            
+            .profil-image {
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                height: 70vh;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .btn {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar Modern -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="brand">
+                <img src="https://files.catbox.moe/mctmiv.jpg" alt="Logo" class="brand-logo">
+                <div class="brand-text">
+                    <h1>PMII <span>UNU</span> Cirebon</h1>
+                    <p>Pergerakan Mahasiswa Islam Indonesia</p>
+                </div>
+            </a>
+            
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#profil" class="nav-link active">Profil</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#struktur" class="nav-link">Struktur</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#kontak" class="nav-link">Kontak</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>PMII <span>UNU Cirebon</span></h1>
+            <p>Membangun intelektual muslim yang berkarakter dan berakhlak mulia berdasarkan nilai-nilai Ahlussunnah Wal Jama'ah</p>
+            <a href="#profil" class="btn btn-primary">Selengkapnya</a>
+        </div>
+    </section>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Profil Section -->
+        <section id="profil">
+            <div class="section-title">
+                <h2>Profil Organisasi</h2>
+                <p>Mengenal lebih dekat tentang Pergerakan Mahasiswa Islam Indonesia Universitas Nahdlatul Ulama Cirebon</p>
+            </div>
+            
+            <div class="profil-content">
+                <div class="profil-text">
+                    <h3>Latar Belakang</h3>
+                    <p>PMII (Pergerakan Mahasiswa Islam Indonesia) UNU Cirebon merupakan organisasi kemahasiswaan yang berdiri pada tahun 2021 di lingkungan Universitas Nahdlatul Ulama Cirebon. Sebagai bagian dari jaringan PMII nasional, kami berkomitmen untuk membangun mahasiswa muslim yang intelektual, berkarakter, dan berkontribusi positif bagi masyarakat.</p>
+                    
+                    <p>Organisasi ini menjadi wadah pengembangan diri bagi mahasiswa UNU Cirebon melalui berbagai kegiatan yang mendukung pengembangan intelektual, spiritual, dan sosial. Dengan berlandaskan nilai-nilai Ahlussunnah Wal Jama'ah, PMII UNU Cirebon aktif berkontribusi dalam pengembangan kampus dan masyarakat sekitar.</p>
+                    
+                    <div class="visi-misi">
+                        <h3><i class="fas fa-bullseye"></i> Visi</h3>
+                        <p>"Mewujudkan mahasiswa muslim yang berintelektual, berakhlak mulia, dan mampu berkontribusi positif bagi masyarakat dalam bingkai Ahlussunnah Wal Jama'ah."</p>
+                        
+                        <h3 style="margin-top: 1.5rem;"><i class="fas fa-tasks"></i> Misi</h3>
+                        <ul style="margin-left: 1.5rem;">
+                            <li>Membangun tradisi keilmuan berbasis nilai-nilai Islam moderat</li>
+                            <li>Mengembangkan potensi anggota secara holistik</li>
+                            <li>Menjalin kerjasama strategis untuk pengembangan organisasi</li>
+                            <li>Menjadi mitra konstruktif bagi pengembangan kampus</li>
+                            <li>Melaksanakan pengabdian masyarakat secara berkelanjutan</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="profil-image">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Kegiatan PMII UNU Cirebon">
+                </div>
+            </div>
+        </section>
+        
+   <!-- Struktur Section -->
+<section id="struktur">
+    <div class="section-title">
+        <h2>Struktur Organisasi</h2>
+        <p>Susunan kepengurusan PMII UNU Cirebon masa khidmat 2025-2026</p>
+    </div>
+    
+    <div class="struktur-container">
+        <table class="struktur-table">
+            <thead>
+                <tr>
+                    <th>Jabatan</th>
+                    <th>Nama Lengkap</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td class="highlight">Ketua</td><td>Muhammad Faiz Hadi</td></tr>
+                <tr><td class="highlight">Sekretaris</td><td>Badar Muhammad Badrudduja</td></tr>
+                <tr><td class="highlight">Bendahara</td><td>Yusrul Amri</td></tr>
+                <tr><td class="highlight">Wakil Bendahara</td><td>Moh. Halwan Fadli Ilhami</td></tr>
+
+                <!-- Bidang Kaderisasi -->
+                <tr><td colspan="2" class="section-header"><strong> Bidang Kaderisasi</strong> </td></tr>
+                <tr><td>Wakil Ketua</td><td>Abdullah Massaid</td></tr>
+                <tr><td>Wakil Sekretaris</td><td>Fais Indra Fauzi</td></tr>
+                <tr><td>Anggota</td><td>Bagus Adi Wichaksono</td></tr>
+
+                <!-- Bidang Komunikasi -->
+                <tr><td colspan="2" class="section-header"><strong> Bidang Komunikasi dan Hubungan Antar Lembaga Organisasi</strong></td></tr>
+                <tr><td>Wakil Ketua</td><td>Dicky Ahmad Fauzi</td></tr>
+                <tr><td>Wakil Sekretaris</td><td>Mukhamad Masrur</td></tr>
+                <tr><td>Anggota</td><td>Fajar Ardiansyah</td></tr>
+
+                <!-- Bidang Keagamaan -->
+                <tr><td colspan="2" class="section-header"><strong> Bidang Keagamaan</strong></td></tr>
+                <tr><td>Wakil Ketua</td><td>Martin Surrohman</td></tr>
+                <tr><td>Wakil Sekretaris</td><td>Miftachurrohman</td></tr>
+                <tr><td>Anggota</td><td>Moh. Taffriyatul Hildan</td></tr>
+
+                <!-- Bidang Pendidikan -->
+                <tr><td colspan="2" class="section-header"><strong> Bidang Pendidikan dan Pengembangan Akademik</strong></td></tr>
+                <tr><td>Wakil Ketua</td><td>Muhammad Ali Ridho</td></tr>
+                <tr><td>Wakil Sekretaris</td><td>Melysa</td></tr>
+                <tr><td>Anggota</td><td>Chusnul Triyanggi</td></tr>
+
+                <!-- Bidang Siber Media -->
+                <tr><td colspan="2" class="section-header"><strong> Bidang Siber Media dan Pengelolaan Opini Publik</strong></td></tr>
+                <tr><td>Wakil Ketua</td><td>Yafi Hamami Aziz</td></tr>
+                <tr><td>Wakil Sekretaris</td><td>Irgi Gumelang</td></tr>
+                <tr><td>Anggota</td><td>Sonia Julia</td></tr>
+
+                <!-- KOPRI -->
+                <tr><td colspan="2" class="section-header"><strong>Badan Semi Otonom Kopri<strong></td></tr>
+                <tr><td>Ketua</td><td>Alfina Nurfadiyah</td></tr>
+                <tr><td>Sekretaris</td><td>Fathatul Mukarromah</td></tr>
+                <tr><td>Bendahara</td><td>Wulan Nuristiqomah</td></tr>
+                <tr><td>Anggota</td><td>Elis Rifatun Fauziyah</td></tr>
+                <tr><td>Anggota</td><td>Indah Setianingsih</td></tr>
+                <tr><td>Anggota</td><td>Ishika Valentina</td></tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+        
+        <!-- Kontak Section -->
+        <section id="kontak">
+            <div class="section-title">
+                <h2>Hubungi Kami</h2>
+                <p>Silakan menghubungi kami melalui berbagai saluran berikut</p>
+            </div>
+            
+            <div class="kontak-grid">
+                <div class="kontak-card">
+                    <h3><i class="fas fa-map-marker-alt"></i> Lokasi Kami</h3>
+                    <p>Sekretariat PMII UNU Cirebon</p>
+                    <p>Gedung Student Center Lt. 2</p>
+                    <p>Universitas Nahdlatul Ulama Cirebon</p>
+                    <p>Jl. Sisingamangaraja No. 33, Cirebon</p>
+                </div>
+                
+                <div class="kontak-card">
+                    <h3><i class="fas fa-envelope"></i> Kontak Resmi</h3>
+                   
+                   <p><i class="fas fa-envelope"></i> pmiiunucirebon21@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> +62 838 172 167 54 (Sekretariat)</p>
+                    <p><i class="fas fa-phone"></i> +62 831-2601 3262 (Ketua) </p>
+                </div>
+                
+                <div class="kontak-card">
+                    <h3><i class="fas fa-share-alt"></i> Media Sosial</h3>
+                    <p><i class="fab fa-instagram"></i> @pmiiunu_cirebon</p>
+                    <p><i class="fab fa-facebook"></i> PMII UNU Cirebon</p>
+                    <p><i class="fab fa-twitter"></i> @PMII_UNUCirebon</p>
+                    <p><i class="fab fa-youtube"></i> PMII UNU Cirebon TV</p>
+                    
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>Tentang PMII UNU Cirebon</h3>
+                <p>PMII UNU Cirebon adalah organisasi mahasiswa Islam yang berkomitmen untuk membangun intelektual muslim yang berkarakter dan berakhlak mulia berdasarkan nilai-nilai Ahlussunnah Wal Jama'ah.</p>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Link Cepat</h3>
+                <ul class="footer-links">
+                    <li><a href="#profil"><i class="fas fa-chevron-right"></i> Profil Organisasi</a></li>
+                    <li><a href="#struktur"><i class="fas fa-chevron-right"></i> Struktur Kepengurusan</a></li>
+                    <li><a href="#kontak"><i class="fas fa-chevron-right"></i> Hubungi Kami</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Jam Operasional</h3>
+                <p><i class="far fa-clock"></i> Senin - Jumat</p>
+                <p>08:00 - 16:00 WIB</p>
+                <p><i class="far fa-clock"></i> Sabtu</p>
+                <p>09:00 - 14:00 WIB</p>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; <span id="year"></span> PMII Universitas Nahdlatul Ulama Cirebon. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.innerHTML = navMenu.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Update copyright year
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
