@@ -176,7 +176,41 @@
             background-color: transparent;
             color: var(--secondary);
         }
-        
+   /* Hero Buttons */
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+@media (max-width: 576px) {
+    .hero-buttons {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .hero-buttons .btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.8rem;
+    }
+} /* Hero Buttons */
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+@media (max-width: 576px) {
+    .hero-buttons {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .hero-buttons .btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.8rem;
+    }
+}
         /* Main Content */
         .container {
             width: 100%;
@@ -605,13 +639,16 @@
     </nav>
     
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>PMII <span>UNU</span> Cirebon</h1>
-            <p>Membangun intelektual muslim yang berkarakter dan berakhlak mulia berdasarkan nilai-nilai Ahlussunnah Wal Jama'ah</p>
+<section class="hero">
+    <div class="hero-content">
+        <h1>PMII <span>UNU</span> Cirebon</h1>
+        <p>Membangun intelektual muslim yang berkarakter dan berakhlak mulia berdasarkan nilai-nilai Ahlussunnah Wal Jama'ah</p>
+        <div class="hero-buttons">
+<a href="pendaftaran.html" class="btn btn-primary" style="background-color: white; color: black; border: 2px solid white; margin-right: 10px;">Daftar</a>
             <a href="#profil" class="btn btn-primary">Selengkapnya</a>
         </div>
-    </section>
+    </div>
+</section>
     
     <!-- Main Content -->
     <div class="container">
@@ -842,4 +879,4 @@
         }
     </script>
 </body>
-    </html>
+</html>
