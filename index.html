@@ -402,29 +402,64 @@
             gap: 3rem;
         }
         
-        .footer-col h3 {
-            color: var(--secondary);
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        
-        .footer-col h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 2px;
-            background-color: var(--secondary);
-        }
-        
-        .footer-col p {
-            margin-bottom: 1rem;
-            opacity: 0.8;
-            line-height: 1.6;
-        }
+      .footer-col h3 {
+    color: var(--secondary);
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-col h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: var(--secondary);
+}
+
+.footer-col p {
+    margin-bottom: 1rem;
+    opacity: 0.8;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* Responsif untuk layar kecil (mobile) */
+@media (max-width: 768px) {
+    .footer-col h3 {
+        font-size: 1rem;
+        padding-bottom: 8px;
+    }
+
+    .footer-col h3::after {
+        width: 35px;
+    }
+
+    .footer-col p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+}
+
+/* Responsif untuk layar besar (desktop) */
+@media (min-width: 1200px) {
+    .footer-col h3 {
+        font-size: 1.3rem;
+        padding-bottom: 12px;
+    }
+
+    .footer-col h3::after {
+        width: 60px;
+    }
+
+    .footer-col p {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+}
         
         .footer-links {
             margin: 0;
