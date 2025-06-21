@@ -26,36 +26,6 @@
             color: #333;
             line-height: 1.7;
             overflow-x: hidden;
-            position: relative;
-        }
-
-        /* Animasi Background */
-        .background-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
-
-        .circle {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(26, 35, 126, 0.1);
-            animation: float 15s infinite linear;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-1000px) rotate(720deg);
-                opacity: 0;
-            }
         }
         
         a {
@@ -162,15 +132,11 @@
             text-align: center;
             color: white;
             padding: 0 2rem;
-            position: relative;
-            z-index: 1;
         }
         
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
-            position: relative;
-            z-index: 2;
         }
         
         .hero h1 {
@@ -217,9 +183,6 @@
             max-width: 1200px;
             margin: 4rem auto;
             padding: 0 2rem;
-            position: relative;
-            z-index: 1;
-            background-color: white;
         }
         
         .section-title {
@@ -428,8 +391,6 @@
             color: white;
             padding: 4rem 0 2rem;
             margin-top: 4rem;
-            position: relative;
-            z-index: 1;
         }
         
         .footer-container {
@@ -611,9 +572,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
-    <!-- Animasi Background -->
-    <div class="background-animation" id="background-animation"></div>
-
     <!-- Navbar -->
     <nav class="navbar">
         <div class="nav-container">
@@ -638,6 +596,9 @@
                 </li>
                 <li class="nav-item">
                     <a href="#kontak" class="nav-link">Kontak</a>
+                </li>
+                <li class="nav-item">
+                    <a href="Pendaftaran.html" class="nav-link">Pendaftaran</a>
                 </li>
             </ul>
         </div>
@@ -808,6 +769,7 @@
                     <li><a href="#profil"><i class="fas fa-chevron-right"></i> Profil Organisasi</a></li>
                     <li><a href="#struktur"><i class="fas fa-chevron-right"></i> Struktur Kepengurusan</a></li>
                     <li><a href="#kontak"><i class="fas fa-chevron-right"></i> Hubungi Kami</a></li>
+                    <li><a href="Pendaftaran.html"><i class="fas fa-chevron-right"></i> Pendaftaran Anggota</a></li>
                 </ul>
             </div>
             
@@ -868,46 +830,16 @@
             });
         });
 
-        // Animasi Background
-        const background = document.getElementById('background-animation');
-        const colors = ['rgba(26, 35, 126, 0.1)', 'rgba(255, 193, 7, 0.1)', 'rgba(13, 21, 58, 0.1)'];
-
-        function createCircle() {
-            const circle = document.createElement('div');
-            circle.classList.add('circle');
-            
-            // Random properties
-            const size = Math.random() * 100 + 50;
-            const posX = Math.random() * window.innerWidth;
-            const posY = Math.random() * window.innerHeight;
-            const color = colors[Math.floor(Math.random() * colors.length)];
-            const duration = Math.random() * 15 + 10;
-            const delay = Math.random() * 5;
-            
-            // Apply styles
-            circle.style.width = `${size}px`;
-            circle.style.height = `${size}px`;
-            circle.style.left = `${posX}px`;
-            circle.style.top = `${posY}px`;
-            circle.style.background = color;
-            circle.style.animationDuration = `${duration}s`;
-            circle.style.animationDelay = `${delay}s`;
-            
-            background.appendChild(circle);
-            
-            // Remove circle after animation completes
-            setTimeout(() => {
-                circle.remove();
-            }, duration * 1000);
+        // Highlight active nav link based on current page
+        const currentPage = window.location.pathname.split('/').pop();
+        if (currentPage === 'Pendaftaran.html') {
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === 'Pendaftaran.html') {
+                    link.classList.add('active');
+                }
+            });
         }
-
-        // Create initial circles
-        for (let i = 0; i < 15; i++) {
-            createCircle();
-        }
-
-        // Keep creating new circles
-        setInterval(createCircle, 1000);
     </script>
 </body>
-                                                                                      </html>
+                                                                                 </html>
