@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran Anggota PMII UNU Cirebon</title>
+    <style>
+        /* Reset & Base Styles */
+        :root {
+            --primary: #1a237e;
+            --secondary: #ffc107;
+            --dark: #0d153a;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --danger: #dc3545;
+            --success: #28a745;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        a {
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        /* Navbar */
+        .navbar {
+            background-color: var(--dark);
+            padding: 0.8rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .brand {
+            display: flex;
+            align-items: center;
+        }
+        
+        .brand-logo {
+            height: 50px;
+            margin-right: 15px;
+        }
+        
+        .brand-text h1 {
+            color: white;
+            font-size: 1.4rem;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+        
+        .brand-text span {
+            color: var(--secondary);
+        }
+        
+        .brand-text p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-item {
+            margin-left: 1.8rem;
+            position: relative;
+        }
+        
+        .nav-link {
+            color: white;
+            fontWeight: 500;
+            font-size: 1rem;
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-link:hover {
+            color: var(--secondary);
+        }
+        
+        .nav-link.active {
+            color: var(--secondary);
+        }
+        
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 35, 126, 0.8), rgba(26, 35, 126, 0.8)), 
+                        url('https://files.catbox.moe/bipng4.jpg') no-repeat center center/cover;
+            height: 40vh;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 2rem;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero h1 span {
+            color: var(--secondary);
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary);
+            color: var(--dark);
+            border: 2px solid var(--secondary);
+        }
+        
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--secondary);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--secondary);
+            border: 2px solid var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--secondary);
+            color: var(--dark);
+        }
+        
+        /* Form Section */
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+        
+        .form-container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2.5rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        
+        .section-title h2 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        .form-group label.required::after {
+            content: ' *';
+            color: var(--danger);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.2);
+        }
+        
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            background-size: 16px 12px;
+        }
+        
+        .date-input-group {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .date-input-group select,
+        .date-input-group input {
+            flex: 1;
+        }
+        
+        .file-input {
+            display: flex;
+            align-items: center;
+        }
+        
+        .file-input label {
+            background-color: var(--primary);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .file-input label:hover {
+            background-color: #0d153a;
+        }
+        
+        .file-name {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .btn-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+        
+        .btn-group .btn {
+            width: 48%;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 2rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-col {
+            padding: 0 1rem;
+        }
+        
+        .footer-col h3 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+        
+        .footer-col p {
+            margin-bottom: 0.8rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        .footer-links {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+        
+        .footer-links a i {
+            margin-right: 8px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .working-hours {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 1rem;
+        }
+        
+        .working-hours i {
+            color: var(--secondary);
+            margin-top: 3px;
+        }
+        
+        .working-hours div p:first-child {
+            font-weight: 500;
+            margin-bottom: 0.2rem;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+                color: white;
+                font-size: 1.5rem;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: var(--dark);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                transition: all 0.5s ease;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-item {
+                margin: 1rem 0;
+            }
+            
+            .hero {
+                height: 35vh;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .form-container {
+                padding: 1.5rem;
+            }
+            
+            .date-input-group {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+            }
+            
+            .btn-group .btn {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+            
+            .btn-group .btn:last-child {
+                margin-bottom: 0;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                height: 40vh;
+            }
+            
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="brand">
+                <img src="https://files.catbox.moe/mctmiv.jpg" alt="Logo" class="brand-logo">
+                <div class="brand-text">
+                    <h1>PMII <span>UNU</span> Cirebon</h1>
+                    <p>Pergerakan Mahasiswa Islam Indonesia</p>
+                </div>
+            </a>
+            
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html#profil" class="nav-link">Profil</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#struktur" class="nav-link">Struktur</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#kontak" class="nav-link">Kontak</a>
+                </li>
+                <li class="nav-item">
+                    <a href="Pendaftaran.html" class="nav-link active">Pendaftaran</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Pendaftaran <span>Anggota</span> PMII</h1>
+            <p>Bergabunglah bersama kami untuk membangun intelektual muslim yang berkarakter dan berakhlak mulia</p>
+        </div>
+    </section>
+    
+    <!-- Form Section -->
+    <div class="container">
+        <div class="form-container">
+            <div class="section-title">
+                <h2>Formulir Pendaftaran</h2>
+                <p>Isi data diri Anda dengan lengkap dan benar</p>
+            </div>
+            
+            <form id="registrationForm" enctype="multipart/form-data">
+                <!-- Data Pribadi -->
+                <div class="form-group">
+                    <label for="nama" class="required">Nama Lengkap</label>
+                    <input type="text" id="nama" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="tempat_lahir" class="required">Tempat Lahir</label>
+                    <input type="text" id="tempat_lahir" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="required">Tanggal Lahir</label>
+                    <div class="date-input-group">
+                        <select id="tanggal" class="form-control" required>
+                            <option value="">Tanggal</option>
+                            <script>
+                                for(let i = 1; i <= 31; i++) {
+                                    document.write(`<option value="${i}">${i}</option>`);
+                                }
+                            </script>
+                        </select>
+                        <select id="bulan" class="form-control" required>
+                            <option value="">Bulan</option>
+                            <option value="1">Januari</option>
+                            <option value="2">Februari</option>
+                            <option value="3">Maret</option>
+                            <option value="4">April</option>
+                            <option value="5">Mei</option>
+                            <option value="6">Juni</option>
+                            <option value="7">Juli</option>
+                            <option value="8">Agustus</option>
+                            <option value="9">September</option>
+                            <option value="10">Oktober</option>
+                            <option value="11">November</option>
+                            <option value="12">Desember</option>
+                        </select>
+                        <select id="tahun" class="form-control" required>
+                            <option value="">Tahun</option>
+                            <script>
+                                const currentYear = new Date().getFullYear();
+                                for(let i = currentYear; i >= currentYear - 50; i--) {
+                                    document.write(`<option value="${i}">${i}</option>`);
+                                }
+                            </script>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="alamat" class="required">Alamat</label>
+                    <textarea id="alamat" class="form-control" rows="3" required></textarea>
+                </div>
+                
+                <!-- Data Akademik -->
+                <div class="form-group">
+                    <label for="fakultas" class="required">Fakultas</label>
+                    <select id="fakultas" class="form-control" required>
+                        <option value="">-- Pilih Fakultas --</option>
+                        <option value="FKIP">Fakultas Keguruan Dan Ilmu Pendidikan</option>
+                        <option value="FAI">Fakultas Agama Islam</option>
+                        <option value="FH">Fakultas Hukum</option>
+                        <option value="FE">Fakultas Ekonomi</option>
+                        <option value="FIK">Fakultas Ilmu Komputer</option>
+                        <option value="FTKP">Fakultas Teknologi Kelautan & Perikanan</option>
+                        <option value="FP">Fakultas Peternakan</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="prodi" class="required">Program Studi</label>
+                    <input type="text" id="prodi" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="nim" class="required">NIM</label>
+                    <input type="text" id="nim" class="form-control" required>
+                </div>
+                
+                <!-- Kontak -->
+                <div class="form-group">
+                    <label for="hp" class="required">No Handphone</label>
+                    <input type="tel" id="hp" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email" class="required">Email</label>
+                    <input type="email" id="email" class="form-control" required>
+                </div>
+                
+                <!-- Pengalaman Organisasi -->
+                <div class="form-group">
+                    <label>Pengalaman Organisasi</label>
+                    <input type="text" class="form-control" placeholder="Organisasi 1" style="margin-bottom: 0.5rem;">
+                    <input type="text" class="form-control" placeholder="Organisasi 2" style="margin-bottom: 0.5rem;">
+                    <input type="text" class="form-control" placeholder="Organisasi 3" style="margin-bottom: 0.5rem;">
+                    <input type="text" class="form-control" placeholder="Organisasi 4" style="margin-bottom: 0.5rem;">
+                    <input type="text" class="form-control" placeholder="Organisasi 5">
+                </div>
+                
+                <!-- Motto Hidup -->
+                <div class="form-group">
+                    <label for="motto">Motto Hidup (Opsional)</label>
+                    <input type="text" id="motto" class="form-control">
+                </div>
+                
+                <!-- Upload File -->
+                <div class="form-group">
+                    <label for="foto" class="required">Pas Foto (Maks. 2MB)</label>
+                    <div class="file-input">
+                        <label for="foto"><i class="fas fa-upload"></i> Pilih File</label>
+                        <span class="file-name" id="foto-name">Belum ada file dipilih</span>
+                        <input type="file" id="foto" accept="image/*" style="display: none;" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="ktp" class="required">KTP (Maks. 2MB)</label>
+                    <div class="file-input">
+                        <label for="ktp"><i class="fas fa-upload"></i> Pilih File</label>
+                        <span class="file-name" id="ktp-name">Belum ada file dipilih</span>
+                        <input type="file" id="ktp" accept="image/*" style="display: none;" required>
+                    </div>
+                </div>
+                
+                <!-- Button Group -->
+                <div class="btn-group">
+                    <button type="button" class="btn btn-secondary" onclick="window.location.href='index.html'">
+                        <i class="fas fa-arrow-left"></i> Kembali
+                    </button>
+                    <button type="submit" class="btn btn-primary" id="submitBtn">
+                        <i class="fas fa-paper-plane"></i> Kirim Formulir
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>Tentang PMII UNU Cirebon</h3>
+                <p>PMII UNU Cirebon adalah organisasi mahasiswa Islam yang berkomitmen untuk membangun intelektual muslim yang berkarakter dan berakhlak mulia berdasarkan nilai-nilai Ahlussunnah Wal Jama'ah.</p>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Link Cepat</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html#profil"><i class="fas fa-chevron-right"></i> Profil Organisasi</a></li>
+                    <li><a href="index.html#struktur"><i class="fas fa-chevron-right"></i> Struktur Kepengurusan</a></li>
+                    <li><a href="index.html#kontak"><i class="fas fa-chevron-right"></i> Hubungi Kami</a></li>
+                    <li><a href="Pendaftaran.html"><i class="fas fa-chevron-right"></i> Pendaftaran Anggota</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Jam Operasional</h3>
+                <div class="working-hours">
+                    <i class="far fa-clock"></i>
+                    <div>
+                        <p><strong>Senin - Jumat</strong></p>
+                        <p>08:00 - 16:00 WIB</p>
+                    </div>
+                </div>
+                <div class="working-hours">
+                    <i class="far fa-clock"></i>
+                    <div>
+                        <p><strong>Sabtu</strong></p>
+                        <p>09:00 - 14:00 WIB</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; <span id="year"></span> PMII Universitas Nahdlatul Ulama Cirebon. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.innerHTML = navMenu.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Update copyright year
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // File input handler
+        document.getElementById('foto').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                if (file.size > 2 * 1024 * 1024) {
+                    alert('Ukuran file terlalu besar. Maksimal 2MB.');
+                    this.value = '';
+                    document.getElementById('foto-name').textContent = 'Belum ada file dipilih';
+                    return;
+                }
+                document.getElementById('foto-name').textContent = file.name;
+            } else {
+                document.getElementById('foto-name').textContent = 'Belum ada file dipilih';
+            }
+        });
+        
+        document.getElementById('ktp').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                if (file.size > 2 * 1024 * 1024) {
+                    alert('Ukuran file terlalu besar. Maksimal 2MB.');
+                    this.value = '';
+                    document.getElementById('ktp-name').textContent = 'Belum ada file dipilih';
+                    return;
+                }
+                document.getElementById('ktp-name').textContent = file.name;
+            } else {
+                document.getElementById('ktp-name').textContent = 'Belum ada file dipilih';
+            }
+        });
+        
+        // Form submission handler
+        document.getElementById('registrationForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
+            
+            try {
+                // Get form data
+                const nama = document.getElementById('nama').value;
+                const tempat_lahir = document.getElementById('tempat_lahir').value;
+                const tanggal = document.getElementById('tanggal').value;
+                const bulan = document.getElementById('bulan').value;
+                const tahun = document.getElementById('tahun').value;
+                const alamat = document.getElementById('alamat').value;
+                const fakultas = document.getElementById('fakultas').value;
+                const prodi = document.getElementById('prodi').value;
+                const nim = document.getElementById('nim').value;
+                const hp = document.getElementById('hp').value;
+                const email = document.getElementById('email').value;
+                const motto = document.getElementById('motto').value;
+                const foto = document.getElementById('foto').files[0];
+                const ktp = document.getElementById('ktp').files[0];
+                
+                // Get organization experiences
+                const pengalaman = [];
+                document.querySelectorAll('input[type="text"][placeholder^="Organisasi"]').forEach(input => {
+                    if (input.value) pengalaman.push(input.value);
+                });
+                
+                // Format date
+                const bulanNames = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", 
+                                  "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+                const ttl = `${tempat_lahir}, ${tanggal} ${bulanNames[parseInt(bulan)-1} ${tahun}`;
+                
+                // Format message for Telegram
+                let message = `*PENDAFTARAN ANGGOTA BARU PMII UNU CIREBON*\n\n`;
+                message += `*Nama Lengkap:* ${nama}\n`;
+                message += `*Tempat, Tanggal Lahir:* ${ttl}\n`;
+                message += `*Alamat:* ${alamat}\n`;
+                message += `*Fakultas:* ${document.getElementById('fakultas').options[document.getElementById('fakultas').selectedIndex].text}\n`;
+                message += `*Program Studi:* ${prodi}\n`;
+                message += `*NIM:* ${nim}\n`;
+                message += `*No Handphone:* ${hp}\n`;
+                message += `*Email:* ${email}\n\n`;
+                
+                if (pengalaman.length > 0) {
+                    message += `*Pengalaman Organisasi:*\n`;
+                    pengalaman.forEach((org, index) => {
+                        message += `${index + 1}. ${org}\n`;
+                    });
+                    message += `\n`;
+                }
+                
+                if (motto) message += `*Motto Hidup:* ${motto}\n\n`;
+                
+                message += `*File yang diupload:*\n`;
+                message += `- Pas Foto: ${foto ? foto.name : 'Tidak ada'}\n`;
+                message += `- KTP: ${ktp ? ktp.name : 'Tidak ada'}\n\n`;
+                message += `_Data dikirim pada ${new Date().toLocaleString()}_`;
+                
+                // Telegram bot configuration
+                const telegramBotToken = '8147099222:AAHqSkHLUuBmABTJpkbGlxW62ibzq83q-vo';
+                const chatId = '6614986308';
+                
+                // Send text message to Telegram
+                const textResponse = await fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: chatId,
+                        text: message,
+                        parse_mode: 'Markdown'
+                    })
+                });
+                
+                const textResult = await textResponse.json();
+                
+                if (!textResponse.ok) {
+                    throw new Error('Gagal mengirim pesan teks ke Telegram');
+                }
+                
+                // Function to send file to Telegram
+                const sendFileToTelegram = async (file, caption) => {
+                    const formData = new FormData();
+                    formData.append('chat_id', chatId);
+                    formData.append('caption', caption);
+                    formData.append('document', file);
+                    
+                    const response = await fetch(`https://api.telegram.org/bot${telegramBotToken}/sendDocument`, {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    return response.json();
+                };
+                
+                // Send files if they exist
+                if (foto) {
+                    await sendFileToTelegram(foto, `Pas Foto - ${nama}`);
+                }
+                
+                if (ktp) {
+                    await sendFileToTelegram(ktp, `KTP - ${nama}`);
+                }
+                
+                // Show success message
+                alert('Formulir pendaftaran berhasil dikirim! Kami akan menghubungi Anda segera.');
+                
+                // Reset form
+                this.reset();
+                document.querySelectorAll('.file-name').forEach(el => el.textContent = 'Belum ada file dipilih');
+                
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Terjadi kesalahan saat mengirim formulir. Silakan coba lagi.');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Kirim Formulir';
+            }
+        });
+    </script>
+</body>
+</html>
